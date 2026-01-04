@@ -19,45 +19,46 @@
 ### Phase 1: Smart Contract Development (The Foundation)
 Focus: Creating the assets for identity and governance.
 
-- [ ] **Setup Hardhat Environment**
+- [x] **Setup Hardhat Environment**
     - Initialize Hardhat project with TypeScript.
     - Install `@openzeppelin/contracts`.
     - Configure `hardhat.config.ts` for Polygon Amoy.
 
-- [ ] **Develop `JCDMembership.sol` (SBT)**
-    - [ ] Inherit from ERC-721.
-    - [ ] **Crucial**: Override `transferFrom`, `safeTransferFrom` to revert (make it non-transferable/Soulbound).
-    - [ ] Implement `mint(address to)` function (onlyOwner or via whitelist logic).
-    - [ ] Set up Base URI for metadata.
+- [x] **Develop `JCDMembership.sol` (SBT)**
+    - [x] Inherit from ERC-721.
+    - [x] Override `transferFrom`, `safeTransferFrom` to revert (make it non-transferable/Soulbound).
+    - [x] Implement `safeMint(address to)` function (onlyOwner).
+    - [x] Set up Base URI for metadata.
 
-- [ ] **Develop `JCDToken.sol` (Governance Token)**
-    - [ ] Inherit from ERC-20 and ERC20Permit.
-    - [ ] Inherit from `ERC20Votes` (Essential for Snapshot strategy).
-    - [ ] Implement a fixed supply or mintable logic based on DAO rules.
+- [x] **Develop `JCDToken.sol` (Governance Token)**
+    - [x] Inherit from ERC-20 and ERC20Permit.
+    - [x] Inherit from `ERC20Votes` (Essential for Snapshot strategy).
+    - [x] Implement fixed supply (1,000,000 tokens).
 
-- [ ] **Deployment Scripts**
-    - [ ] Write `deploy.ts` to deploy both contracts.
-    - [ ] Verify contracts on PolygonScan.
+- [x] **Deployment Scripts**
+    - [x] Write `deploy.ts` to deploy both contracts.
+    - [x] Verify contracts on PolygonScan.
+    - [x] Extract ABIs to frontend.
 
 ### Phase 2: Frontend Dashboard (The Interface)
 Focus: A landing page for users to connect wallets and view their status.
 
-- [ ] **Scaffold Next.js App**
+- [x] **Scaffold Next.js App**
     - `npx create-next-app@latest` with TypeScript, Tailwind, ESLint.
     - Install `shadcn/ui` for basic components (Button, Card, Dialog).
 
-- [ ] **Web3 Providers Setup**
+- [x] **Web3 Providers Setup**
     - Configure `RainbowKit` and `WagmiConfig` in the root layout.
     - Set up the Polygon chain configuration.
 
-- [ ] **Feature: Landing Page**
+- [x] **Feature: Landing Page**
     - Hero section explaining the DAO vision.
     - "Connect Wallet" button.
 
-- [ ] **Feature: Member Dashboard**
-    - [ ] **Token Gating Check**: Check if connected wallet holds `JCDMembership` SBT.
-    - [ ] **Display**: Show User's Member ID (Token ID) and $JCD Balance.
-    - [ ] **Action**: Link to Discord (Guild.xyz) and Snapshot.
+- [x] **Feature: Member Dashboard**
+    - [x] **Token Gating Check**: Check if connected wallet holds `JCDMembership` SBT.
+    - [x] **Display**: Show User's $JCD Balance and membership status.
+    - [x] **Route Protection**: Auto-redirect members to `/dashboard`.
 
 ### Phase 3: Off-chain Configuration (Documentation & Configs)
 Focus: Setting up the DAO tooling ecosystem.
@@ -68,5 +69,3 @@ Focus: Setting up the DAO tooling ecosystem.
 
 - [ ] **Guild.xyz Requirements**
     - Define the requirements for Discord roles (e.g., "Must hold JCDMembership NFT").
-
-## 4. Architecture & File Structure

@@ -1,11 +1,28 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useJCDUser } from '@/hooks/useJCDUser';
 import { formatEther } from 'viem';
 
 export default function Home() {
-  const { jcdTokenBalance, isMember } = useJCDUser();
+  const router = useRouter();
+  const { jcdTokenBalance, isMember, isLoading } = useJCDUser();
+
+  useEffect(() => {
+    if (!isLoading && isMember) {
+      router.push('/dashboard');
+    }
+  }, [isMember, isLoading, router]);
+
+  if (isLoading) {
+    return (
+      <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+        <div className="text-white text-xl animate-pulse">加载中...</div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
@@ -49,7 +66,7 @@ export default function Home() {
                       Connect Wallet to Join
                     </button>
                   )}
-                  {connected && (
+                  {connected && !isMember && (
                     <div className="text-white text-center">
                       <p className="text-lg">Welcome, {account.displayName}!</p>
                       <p className="text-sm text-gray-400 mt-2">
@@ -60,7 +77,7 @@ export default function Home() {
                           JCD Balance: <span className="font-bold text-purple-400">{jcdTokenBalance ? formatEther(jcdTokenBalance) : '0'}</span>
                         </p>
                         <p className="text-white">
-                          Membership: <span className="font-bold text-pink-400">{isMember ? 'Active' : 'Inactive'}</span>
+                          Membership: <span className="font-bold text-pink-400">Inactive</span>
                         </p>
                       </div>
                     </div>
