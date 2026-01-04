@@ -60,12 +60,54 @@ Focus: A landing page for users to connect wallets and view their status.
     - [x] **Display**: Show User's $JCD Balance and membership status.
     - [x] **Route Protection**: Auto-redirect members to `/dashboard`.
 
-### Phase 3: Off-chain Configuration (Documentation & Configs)
-Focus: Setting up the DAO tooling ecosystem.
+### Phase 3: Identity & Access Control (Guild.xyz)
+**Goal**: Link on-chain assets (SBT) to off-chain community (Discord).
 
-- [ ] **Snapshot Configuration Strategy**
-    - Define the `strategies` JSON for Snapshot (e.g., using `erc20-balance-of` or `erc20-votes`).
-    - Document the Snapshot space setup process in `docs/snapshot-setup.md`.
+- [ ] **Discord Server Setup**
+    - Create a new Discord Server for JCDAO.
+    - Create roles: `Visitor`, `Member` (SBT Holder), `Core` (Multisig Signer).
+    - Create channels: `#public-chat`, `#member-only` (Private), `#governance` (Private).
 
-- [ ] **Guild.xyz Requirements**
-    - Define the requirements for Discord roles (e.g., "Must hold JCDMembership NFT").
+- [ ] **Guild.xyz Configuration**
+    - [ ] Connect Wallet (Owner) to Guild.xyz.
+    - [ ] Create a "Guild" and link the Discord Server.
+    - [ ] **Define Role Requirement (Member)**:
+        - Condition: "Hold at least 1 NFT" from contract `[Your_Deployed_SBT_Address]`.
+        - Chain: Polygon Amoy.
+    - [ ] **Define Role Requirement (Whale/Contributor)**:
+        - Condition: "Hold at least 100 $JCD" from contract `[Your_Deployed_Token_Address]`.
+    - [ ] Test the "Join Guild" flow on the frontend Dashboard.
+
+### Phase 4: Governance Setup (Snapshot)
+**Goal**: Enable gas-less voting for token holders.
+
+- [ ] **ENS Setup (Testnet/Mainnet)**
+    - *Note*: Snapshot requires an ENS domain (e.g., `jcdao.eth`) to create a Space. On testnet, use `demo.eth` subdomains or just mock it if testing locally.
+    - For Mainnet production: Buy an ENS domain.
+
+- [ ] **Snapshot Space Creation**
+    - Create a space on snapshot.org.
+    - **Strategy**: Select `erc20-balance-of` (or `erc20-votes` if using checkpoints).
+    - Network: Polygon Amoy (80002).
+    - Address: `[Your_Deployed_Token_Address]`.
+    - Symbol: JCD.
+
+- [ ] **Frontend Integration**
+    - Add a "Vote" button in the Dashboard linking to the Snapshot Space URL.
+
+### Phase 5: Asset Safety (Safe Multisig)
+**Goal**: Secure the treasury.
+
+- [ ] **Create Safe Wallet**
+    - Go to https://app.safe.global/ (Select Polygon Amoy network).
+    - Create a new Safe.
+    - **Signers**: Add your wallet + 1-2 other test wallets you control (simulate team members).
+    - **Threshold**: Set to 2/3 (requires 2 signatures to execute tx).
+
+- [ ] **Transfer Ownership (Optional but Recommended)**
+    - Transfer ownership of the Smart Contracts (SBT/Token) to the Safe Address.
+    - *Why*: So only the DAO (via multisig) can mint/change rules, not one person.
+
+### Phase 6: Operational Documentation
+- [ ] Write `docs/onboarding.md`: How to get SBT?
+- [ ] Write `docs/governance.md`: How to propose a vote?
