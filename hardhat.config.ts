@@ -8,6 +8,17 @@ const POLYGON_AMOY_RPC_URL = process.env.POLYGON_AMOY_RPC_URL || "https://rpc-am
 const POLYGON_MAINNET_RPC_URL = process.env.POLYGON_MAINNET_RPC_URL || "https://polygon-rpc.com";
 const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "";
 
+// 验证私钥格式是否有效（64位十六进制，可带0x前缀）
+function getAccounts(): string[] {
+    if (!PRIVATE_KEY) return [];
+    const key = PRIVATE_KEY.startsWith("0x") ? PRIVATE_KEY.slice(2) : PRIVATE_KEY;
+    // 必须是64位十六进制字符
+    if (/^[0-9a-fA-F]{64}$/.test(key)) {
+        return [PRIVATE_KEY.startsWith("0x") ? PRIVATE_KEY : `0x${PRIVATE_KEY}`];
+    }
+    return [];
+}
+
 const config: HardhatUserConfig = {
     solidity: {
         version: "0.8.24",
@@ -27,12 +38,13 @@ const config: HardhatUserConfig = {
         },
         polygonAmoy: {
             url: POLYGON_AMOY_RPC_URL,
-            accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
+            accounts: getAccounts(),
             chainId: 80002,
+            timeout: 60000,
         },
         polygonMainnet: {
             url: POLYGON_MAINNET_RPC_URL,
-            accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
+            accounts: getAccounts(),
             chainId: 137,
         },
     },
@@ -41,16 +53,7 @@ const config: HardhatUserConfig = {
             polygon: POLYGONSCAN_API_KEY,
             polygonAmoy: POLYGONSCAN_API_KEY,
         },
-        customChains: [
-            {
-                network: "polygonAmoy",
-                chainId: 80002,
-                urls: {
-                    apiURL: "https://api-amoy.polygonscan.com/api",
-                    browserURL: "https://amoy.polygonscan.com",
-                },
-            },
-        ],
+        customChains: [],
     },
     gasReporter: {
         enabled: process.env.REPORT_GAS === "true",
