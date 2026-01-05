@@ -68,7 +68,8 @@ Focus: A landing page for users to connect wallets and view their status.
     - Create roles: `Visitor`, `Member` (SBT Holder), `Core` (Multisig Signer).
     - Create channels: `#public-chat`, `#member-only` (Private), `#governance` (Private).
 
-- [ ] **Guild.xyz Configuration**
+- [/] **Guild.xyz Configuration**
+    - [x] 生成配置文件 `config/guild-config.json`（合约地址、Discord 身份组建议）
     - [ ] Connect Wallet (Owner) to Guild.xyz.
     - [ ] Create a "Guild" and link the Discord Server.
     - [ ] **Define Role Requirement (Member)**:
@@ -85,15 +86,17 @@ Focus: A landing page for users to connect wallets and view their status.
     - *Note*: Snapshot requires an ENS domain (e.g., `jcdao.eth`) to create a Space. On testnet, use `demo.eth` subdomains or just mock it if testing locally.
     - For Mainnet production: Buy an ENS domain.
 
-- [ ] **Snapshot Space Creation**
-    - Create a space on snapshot.org.
-    - **Strategy**: Select `erc20-balance-of` (or `erc20-votes` if using checkpoints).
-    - Network: Polygon Amoy (80002).
-    - Address: `[Your_Deployed_Token_Address]`.
-    - Symbol: JCD.
+- [/] **Snapshot Space Creation**
+    - [x] 生成策略配置文件 `config/snapshot-strategy.json`（erc20-balance-of 策略）
+    - [ ] Create a space on snapshot.org.
+    - [ ] **Strategy**: Select `erc20-balance-of` (or `erc20-votes` if using checkpoints).
+    - [ ] Network: Polygon Amoy (80002).
+    - [ ] Address: `[Your_Deployed_Token_Address]`.
+    - [ ] Symbol: JCD.
 
-- [ ] **Frontend Integration**
-    - Add a "Vote" button in the Dashboard linking to the Snapshot Space URL.
+- [/] **Frontend Integration**
+    - [x] 添加 `SNAPSHOT_SPACE_URL` 和 `GUILD_URL` 常量到 `constants.ts`
+    - [ ] Add a "Vote" button in the Dashboard linking to the Snapshot Space URL.
 
 ### Phase 5: Asset Safety (Safe Multisig)
 **Goal**: Secure the treasury.

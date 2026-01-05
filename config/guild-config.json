@@ -1,0 +1,172 @@
+{
+    "guildName": "JCDAO Guild",
+    "description": "Japan-Chinese Developer DAO - 连接日本与中国开发者的 Web3 社区",
+    "theme": {
+        "color": "#7C3AED",
+        "backgroundImage": ""
+    },
+    "network": {
+        "chainId": 80002,
+        "chainName": "Polygon Amoy Testnet",
+        "rpcUrl": "https://rpc-amoy.polygon.technology"
+    },
+    "contracts": {
+        "JCDMembership": {
+            "address": "<YOUR_DEPLOYED_JCD_MEMBERSHIP_ADDRESS>",
+            "type": "ERC721 (Soulbound)",
+            "description": "会员资格 SBT，不可转让"
+        },
+        "JCDToken": {
+            "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+            "type": "ERC20 + ERC20Votes",
+            "symbol": "JCD",
+            "decimals": 18,
+            "description": "治理代币，用于 Snapshot 投票"
+        }
+    },
+    "roles": [
+        {
+            "name": "JCDAO Member",
+            "discordRole": "@JCDAO-Member",
+            "requirement": {
+                "type": "nft",
+                "chain": "POLYGON_AMOY",
+                "address": "<YOUR_DEPLOYED_JCD_MEMBERSHIP_ADDRESS>",
+                "minAmount": 1,
+                "description": "持有至少 1 个 JCDMembership SBT"
+            },
+            "discordChannelsAccess": [
+                "#member-only",
+                "#governance"
+            ]
+        },
+        {
+            "name": "JCDAO Whale",
+            "discordRole": "@JCDAO-Whale",
+            "requirement": {
+                "type": "erc20",
+                "chain": "POLYGON_AMOY",
+                "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+                "symbol": "JCD",
+                "minAmount": "10000",
+                "description": "持有至少 10,000 $JCD 代币"
+            },
+            "discordChannelsAccess": [
+                "#whale-lounge"
+            ]
+        },
+        {
+            "name": "JCDAO Contributor",
+            "discordRole": "@JCDAO-Contributor",
+            "requirement": {
+                "type": "erc20",
+                "chain": "POLYGON_AMOY",
+                "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+                "symbol": "JCD",
+                "minAmount": "100",
+                "description": "持有至少 100 $JCD 代币"
+            },
+            "discordChannelsAccess": [
+                "#contributor-chat"
+            ]
+        },
+        {
+            "name": "JCDAO Core",
+            "discordRole": "@JCDAO-Core",
+            "requirement": {
+                "type": "allowlist",
+                "addresses": [
+                    "<MULTISIG_SIGNER_ADDRESS_1>",
+                    "<MULTISIG_SIGNER_ADDRESS_2>",
+                    "<MULTISIG_SIGNER_ADDRESS_3>"
+                ],
+                "description": "Safe 多签钱包签名者，核心团队成员"
+            },
+            "discordChannelsAccess": [
+                "#core-team",
+                "#governance",
+                "#treasury"
+            ]
+        }
+    ],
+    "discordSetup": {
+        "suggestedRoles": [
+            {
+                "name": "@JCDAO-Member",
+                "color": "#3B82F6",
+                "description": "SBT 持有者，正式会员"
+            },
+            {
+                "name": "@JCDAO-Contributor",
+                "color": "#10B981",
+                "description": "贡献者，持有 100+ $JCD"
+            },
+            {
+                "name": "@JCDAO-Whale",
+                "color": "#F59E0B",
+                "description": "大户，持有 10,000+ $JCD"
+            },
+            {
+                "name": "@JCDAO-Core",
+                "color": "#EF4444",
+                "description": "核心团队，多签签名者"
+            },
+            {
+                "name": "@Visitor",
+                "color": "#6B7280",
+                "description": "访客，未持有 SBT"
+            }
+        ],
+        "suggestedChannels": [
+            {
+                "name": "#公告",
+                "type": "text",
+                "access": "everyone",
+                "description": "官方公告频道"
+            },
+            {
+                "name": "#public-chat",
+                "type": "text",
+                "access": "everyone",
+                "description": "公开讨论区"
+            },
+            {
+                "name": "#member-only",
+                "type": "text",
+                "access": "@JCDAO-Member",
+                "description": "会员专属讨论区"
+            },
+            {
+                "name": "#governance",
+                "type": "text",
+                "access": "@JCDAO-Member",
+                "description": "治理提案讨论"
+            },
+            {
+                "name": "#whale-lounge",
+                "type": "text",
+                "access": "@JCDAO-Whale",
+                "description": "大户休息室"
+            },
+            {
+                "name": "#core-team",
+                "type": "text",
+                "access": "@JCDAO-Core",
+                "description": "核心团队频道"
+            }
+        ]
+    },
+    "guildXyzSteps": [
+        "1. 访问 https://guild.xyz 并连接管理员钱包",
+        "2. 点击 'Create Guild' 创建新 Guild",
+        "3. 填写 Guild 名称: 'JCDAO Guild' 和描述",
+        "4. 连接 Discord Server",
+        "5. 为每个 Role 添加 Requirement:",
+        "   - JCDAO Member: NFT -> Polygon Amoy -> <SBT 合约地址> -> Min 1",
+        "   - JCDAO Contributor: Token -> Polygon Amoy -> <Token 合约地址> -> Min 100",
+        "   - JCDAO Whale: Token -> Polygon Amoy -> <Token 合约地址> -> Min 10000",
+        "   - JCDAO Core: Allowlist -> 添加多签地址",
+        "6. 映射 Discord Roles 到对应的 Guild Roles",
+        "7. 保存并测试 'Join Guild' 流程"
+    ]
+}

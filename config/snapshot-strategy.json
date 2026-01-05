@@ -1,0 +1,113 @@
+{
+    "name": "erc20-balance-of",
+    "description": "Snapshot 策略配置 - 基于 JCDToken ERC20 余额进行投票",
+    "snapshotSpaceSettings": {
+        "name": "JCDAO",
+        "about": "Japan-Chinese Developer DAO - 连接日本与中国开发者的 Web3 社区",
+        "network": "80002",
+        "symbol": "JCD",
+        "terms": "",
+        "website": "https://jcdao.xyz",
+        "twitter": "",
+        "github": "https://github.com/jcdao",
+        "admins": [
+            "<YOUR_ADMIN_ADDRESS>"
+        ],
+        "members": [],
+        "categories": [
+            "social",
+            "developer"
+        ],
+        "plugins": {},
+        "voting": {
+            "delay": 0,
+            "period": 259200,
+            "quorum": 100,
+            "hideAbstain": false
+        },
+        "validation": {
+            "name": "basic",
+            "params": {}
+        },
+        "filters": {
+            "minScore": 1,
+            "onlyMembers": false
+        }
+    },
+    "strategy": {
+        "name": "erc20-balance-of",
+        "network": "80002",
+        "params": {
+            "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+            "symbol": "JCD",
+            "decimals": 18
+        }
+    },
+    "strategyForSnapshot": [
+        {
+            "name": "erc20-balance-of",
+            "network": "80002",
+            "params": {
+                "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+                "symbol": "JCD",
+                "decimals": 18
+            }
+        }
+    ],
+    "alternativeStrategy_erc20Votes": {
+        "name": "erc20-votes",
+        "network": "80002",
+        "params": {
+            "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+            "symbol": "JCD",
+            "decimals": 18
+        },
+        "description": "如果使用 ERC20Votes 的 checkpoints 功能，可以选择此策略"
+    },
+    "snapshotSetupSteps": [
+        "1. 访问 https://snapshot.org 并连接管理员钱包",
+        "2. 点击 'Create a Space'",
+        "3. 输入 ENS 域名 (如 jcdao.eth) 或使用测试网 demo 子域名",
+        "4. 填写 Space 信息:",
+        "   - Name: JCDAO",
+        "   - About: Japan-Chinese Developer DAO",
+        "   - Network: Polygon Amoy (80002)",
+        "   - Symbol: JCD",
+        "5. 添加 Strategy:",
+        "   - 点击 'Add strategy'",
+        "   - 选择 'erc20-balance-of'",
+        "   - Network: 80002",
+        "   - 粘贴以下 JSON 到 params:",
+        "     {",
+        "       \"address\": \"<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>\",",
+        "       \"symbol\": \"JCD\",",
+        "       \"decimals\": 18",
+        "     }",
+        "6. 配置投票参数:",
+        "   - Voting delay: 0 (可调整)",
+        "   - Voting period: 3 days (259200 秒)",
+        "   - Quorum: 100 (最少 100 JCD 参与)",
+        "7. 添加 Admins 地址",
+        "8. 保存并发布 Space",
+        "9. 测试创建提案功能"
+    ],
+    "proposalTemplate": {
+        "title": "[JIP-X] 提案标题",
+        "body": "## 摘要\n\n简要描述提案内容。\n\n## 动机\n\n为什么需要这个提案？\n\n## 规格\n\n详细说明提案的技术细节。\n\n## 投票选项\n\n- For: 支持此提案\n- Against: 反对此提案\n- Abstain: 弃权",
+        "choices": [
+            "For",
+            "Against",
+            "Abstain"
+        ],
+        "start": "提案开始时间 (Unix timestamp)",
+        "end": "提案结束时间 (Unix timestamp)",
+        "snapshot": "快照区块号",
+        "type": "single-choice"
+    },
+    "notes": {
+        "chainId": "80002 = Polygon Amoy Testnet, 137 = Polygon Mainnet",
+        "ens": "Snapshot mainnet 需要 ENS 域名，测试可使用 demo.eth 子域名",
+        "quorum": "Quorum 表示提案通过需要的最小投票权重",
+        "votingPower": "1 JCD = 1 投票权重 (无小数)"
+    }
+}

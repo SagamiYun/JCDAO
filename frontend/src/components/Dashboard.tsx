@@ -3,6 +3,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useJCDUser } from '@/hooks/useJCDUser';
 import { formatEther } from 'viem';
+import { GUILD_URL } from '@/lib/constants';
 
 export function Dashboard() {
     const { isConnected, isMember, jcdTokenBalance, isLoading } = useJCDUser();
@@ -59,8 +60,22 @@ export function Dashboard() {
                             )}
                         </div>
                     </div>
+
+                    {/* Guild.xyz 入口按钮 */}
+                    <a
+                        href={GUILD_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold transition-all duration-200 shadow-lg hover:shadow-purple-500/25"
+                    >
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                        加入 Guild
+                    </a>
                 </CardContent>
             </Card>
         </div>
     );
 }
+
