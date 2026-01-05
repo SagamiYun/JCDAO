@@ -74,7 +74,7 @@ export default function Home() {
                       </p>
                       <div className="mt-4 p-4 bg-white/10 rounded-xl backdrop-blur-md">
                         <p className="text-white">
-                          JCD Balance: <span className="font-bold text-purple-400">{jcdTokenBalance ? formatEther(jcdTokenBalance) : '0'}</span>
+                          JCD Balance: <span className="font-bold text-purple-400">{jcdTokenBalance ? formatEther(jcdTokenBalance as bigint) : '0'}</span>
                         </p>
                         <p className="text-white">
                           Membership: <span className="font-bold text-pink-400">Inactive</span>
