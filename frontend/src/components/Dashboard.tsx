@@ -1,13 +1,11 @@
 import React from 'react';
-import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useJCDUser } from '@/hooks/useJCDUser';
 import { formatEther } from 'viem';
 
 export function Dashboard() {
-    const { isConnected } = useAccount();
-    const { isMember, jcdTokenBalance, isLoading } = useJCDUser();
+    const { isConnected, isMember, jcdTokenBalance, isLoading } = useJCDUser();
 
     if (!isConnected) {
         return (

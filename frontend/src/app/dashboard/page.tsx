@@ -2,15 +2,13 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Dashboard } from '@/components/Dashboard';
 import { useJCDUser } from '@/hooks/useJCDUser';
 
 export default function DashboardPage() {
     const router = useRouter();
-    const { isConnected } = useAccount();
-    const { isMember, isLoading } = useJCDUser();
+    const { isConnected, isMember, isLoading } = useJCDUser();
 
     useEffect(() => {
         if (!isLoading && (!isConnected || !isMember)) {
