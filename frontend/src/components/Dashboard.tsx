@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { useJCDUser } from '@/hooks/useJCDUser';
 import { formatEther } from 'viem';
 import { GUILD_URL } from '@/lib/constants';
+import { AdminMintPanel } from '@/components/AdminMintPanel';
 
 export function Dashboard() {
     const { isConnected, isMember, jcdTokenBalance, isLoading } = useJCDUser();
@@ -29,7 +30,7 @@ export function Dashboard() {
     }
 
     return (
-        <div className="flex items-center justify-center min-h-[50vh] p-4">
+        <div className="flex flex-col items-center justify-center min-h-[50vh] p-4 gap-6">
             <Card className="w-full max-w-lg shadow-xl border-0 bg-white/5 backdrop-blur-lg dark:bg-black/40 ring-1 ring-white/10">
                 <CardHeader>
                     <CardTitle className="text-3xl font-bold text-center">
@@ -75,7 +76,11 @@ export function Dashboard() {
                     </a>
                 </CardContent>
             </Card>
+
+            {/* Admin Panel - 仅对合约 Owner 显示 */}
+            <AdminMintPanel />
         </div>
     );
 }
+
 
