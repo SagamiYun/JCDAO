@@ -31,7 +31,7 @@ export function useJCDUser() {
 
     const jcdTokenBalance = result.data?.[0].result;
     const jcdMembershipBalance = result.data?.[1].result;
-    const isMember = jcdMembershipBalance ? jcdMembershipBalance > BigInt(0) : false;
+    const isMember = jcdMembershipBalance ? (jcdMembershipBalance as bigint) > BigInt(0) : false;
 
     return {
         address,

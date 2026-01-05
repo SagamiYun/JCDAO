@@ -57,7 +57,7 @@ export function Dashboard() {
                             {isLoading ? (
                                 <span className="animate-pulse">...</span>
                             ) : (
-                                formatEther(jcdTokenBalance || BigInt(0))
+                                formatEther((jcdTokenBalance as bigint) || BigInt(0))
                             )}
                         </div>
                     </div>
