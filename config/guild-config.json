@@ -12,12 +12,12 @@
     },
     "contracts": {
         "JCDMembership": {
-            "address": "<YOUR_DEPLOYED_JCD_MEMBERSHIP_ADDRESS>",
+            "address": "0x224DF0e3a4A5848189c623501f9feCB3D1279126",
             "type": "ERC721 (Soulbound)",
             "description": "会员资格 SBT，不可转让"
         },
         "JCDToken": {
-            "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+            "address": "0x0A660E03302F3f9313Fb460C24Fe89cDF57B3582",
             "type": "ERC20 + ERC20Votes",
             "symbol": "JCD",
             "decimals": 18,
@@ -31,7 +31,7 @@
             "requirement": {
                 "type": "nft",
                 "chain": "POLYGON_AMOY",
-                "address": "<YOUR_DEPLOYED_JCD_MEMBERSHIP_ADDRESS>",
+                "address": "0x224DF0e3a4A5848189c623501f9feCB3D1279126",
                 "minAmount": 1,
                 "description": "持有至少 1 个 JCDMembership SBT"
             },
@@ -46,7 +46,7 @@
             "requirement": {
                 "type": "erc20",
                 "chain": "POLYGON_AMOY",
-                "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+                "address": "0x0A660E03302F3f9313Fb460C24Fe89cDF57B3582",
                 "symbol": "JCD",
                 "minAmount": "10000",
                 "description": "持有至少 10,000 $JCD 代币"
@@ -61,7 +61,7 @@
             "requirement": {
                 "type": "erc20",
                 "chain": "POLYGON_AMOY",
-                "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+                "address": "0x0A660E03302F3f9313Fb460C24Fe89cDF57B3582",
                 "symbol": "JCD",
                 "minAmount": "100",
                 "description": "持有至少 100 $JCD 代币"

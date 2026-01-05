@@ -11,7 +11,7 @@
         "twitter": "",
         "github": "https://github.com/jcdao",
         "admins": [
-            "<YOUR_ADMIN_ADDRESS>"
+            "0xA6aee49FD4b04dD507CcF619A68fE19402d70216"
         ],
         "members": [],
         "categories": [
@@ -38,7 +38,7 @@
         "name": "erc20-balance-of",
         "network": "80002",
         "params": {
-            "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+            "address": "0x0A660E03302F3f9313Fb460C24Fe89cDF57B3582",
             "symbol": "JCD",
             "decimals": 18
         }
@@ -48,7 +48,7 @@
             "name": "erc20-balance-of",
             "network": "80002",
             "params": {
-                "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+                "address": "0x0A660E03302F3f9313Fb460C24Fe89cDF57B3582",
                 "symbol": "JCD",
                 "decimals": 18
             }
@@ -58,7 +58,7 @@
         "name": "erc20-votes",
         "network": "80002",
         "params": {
-            "address": "<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>",
+            "address": "0x0A660E03302F3f9313Fb460C24Fe89cDF57B3582",
             "symbol": "JCD",
             "decimals": 18
         },
@@ -79,7 +79,7 @@
         "   - Network: 80002",
         "   - 粘贴以下 JSON 到 params:",
         "     {",
-        "       \"address\": \"<YOUR_DEPLOYED_JCD_TOKEN_ADDRESS>\",",
+        "       \"address\": \"0x0A660E03302F3f9313Fb460C24Fe89cDF57B3582\",",
         "       \"symbol\": \"JCD\",",
         "       \"decimals\": 18",
         "     }",
